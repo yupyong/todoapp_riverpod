@@ -36,7 +36,10 @@ class Listview extends ConsumerWidget {
                       showDialog(
                           context: context,
                           builder: (_) {
-                            return EditTaskAlert(task.title);
+                            return EditTaskAlert(
+                              taskText: task.title,
+                              taskId: task.id,
+                            );
                           });
                     },
                     child: ListTile(
@@ -45,7 +48,7 @@ class Listview extends ConsumerWidget {
                       trailing: GestureDetector(
                           onTap: () {
                             ref
-                                .watch(taskNotifier.notifier)
+                                .read(taskNotifier.notifier)
                                 .deleteTask(task.title);
                           },
                           child: Icon(
