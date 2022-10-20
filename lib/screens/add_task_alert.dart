@@ -29,9 +29,9 @@ class AddTaskAlert extends ConsumerWidget {
                 )),
             TextButton(
                 onPressed: () {
-                  ref
-                      .watch(taskNotifier.notifier)
-                      .addTask(Task(title: newTask));
+                  ref.read(taskNotifier.notifier).addTask(Task(
+                      title: newTask,
+                      id: DateTime.now().microsecondsSinceEpoch));
                   Navigator.pop(context);
                 },
                 child: Text(

@@ -26,7 +26,7 @@ class TasksScreen extends ConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 30,
                       backgroundColor: Colors.white,
                       child: Icon(

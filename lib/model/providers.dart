@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:taskapp/model/task.dart';
 
-List<Task> tasks = [
-  Task(title: 'buy the milk'),
-  Task(title: 'go to the gym'),
-  Task(title: 'buy milk'),
-];
+List<Task> tasks = [];
 
 class TaskNotifier extends StateNotifier<List<Task>> {
   TaskNotifier() : super(tasks);
@@ -20,6 +16,44 @@ class TaskNotifier extends StateNotifier<List<Task>> {
       for (final task in state)
         if (task.title != title) task,
     ];
+  }
+
+  void toggle(int id) {
+    List<Task> newState = [];
+    for (final tasks in state) {
+      if (tasks.id == id) {
+        newState.add(tasks.copyWith(isDone: !tasks.isDone));
+      } else {
+        newState.add(tasks);
+      }
+    }
+    state = newState;
+  }
+
+  void editingTask(int id, String newText) {
+    List<Task> newTask = [];
+    for (final tasks in state) {
+      if (tasks.id == id) {
+        //ここで与える引数IDは編集する為に選んだタイル
+        newTask.add(tasks.copyWith(title: newText));
+      } else {
+        newTask.add(tasks);
+      }
+      state = newTask;
+    }
+  }
+
+  void onReorder(int oldIndex, int newIndex) {
+    List<Task> newTask = [];
+    for (final tasks in state) {
+      newTask.add(tasks);
+    }
+    if (oldIndex < newIndex) {
+      newIndex -= 1;
+    }
+    final Task task = newTask.removeAt(oldIndex);
+    newTask.insert(newIndex, task);
+    state = newTask;
   }
 }
 
