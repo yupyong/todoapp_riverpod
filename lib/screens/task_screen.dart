@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:taskapp/model/providers.dart';
-
+import 'package:taskapp/data/providers.dart';
 import '../Widgets/list_view.dart';
-import '../model/task.dart';
 
 class TasksScreen extends ConsumerWidget {
   @override
@@ -37,7 +35,7 @@ class TasksScreen extends ConsumerWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        ref.watch(editProvider.state).state = !edit;
+                        ref.read(editProvider.state).state = !edit;
                       },
                       child: CircleAvatar(
                         radius: 30,

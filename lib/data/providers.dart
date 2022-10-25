@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:taskapp/model/task.dart';
 
@@ -34,7 +33,6 @@ class TaskNotifier extends StateNotifier<List<Task>> {
     List<Task> newTask = [];
     for (final tasks in state) {
       if (tasks.id == id) {
-        //ここで与える引数IDは編集する為に選んだタイル
         newTask.add(tasks.copyWith(title: newText));
       } else {
         newTask.add(tasks);

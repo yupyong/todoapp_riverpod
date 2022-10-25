@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:taskapp/screens/add_task_alert.dart';
-import 'package:taskapp/screens/edit_task_alert.dart';
+import 'package:taskapp/screens/add_task_screen.dart';
+import 'package:taskapp/screens/edit_task_screen.dart';
 
-import '../model/providers.dart';
+import '../data/providers.dart';
 import '../model/task.dart';
 import 'add_task_bar.dart';
 
@@ -23,7 +23,6 @@ class Listview extends ConsumerWidget {
       return ReorderableListView(
         header: editMode ? AddTaskBar() : null,
         footer: editMode ? AddTaskBar() : null,
-        //nullの値で切り替える2つのListTile
         onReorder: (int oldIndex, int newIndex) {
           ref.watch(taskNotifier.notifier).onReorder(oldIndex, newIndex);
         },

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:taskapp/model/providers.dart';
+import 'package:taskapp/data/providers.dart';
 import 'package:taskapp/model/task.dart';
 
 class AddTaskAlert extends ConsumerWidget {
